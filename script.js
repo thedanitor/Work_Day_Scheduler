@@ -1,6 +1,6 @@
 var currentDayEl = $("#currentDay");
-var hourEl = $(".hour");
-var descriptionEl = $(".description")
+// var hourEl = $(".hour");
+// var descriptionEl = $(".description")
 
 var currentHour = moment().format("HH");
 var currentFullDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -54,15 +54,28 @@ var timeChunks = [
     },
 ]
 function createRow(){
+var timeBLockEl = $("<div>", {"class": "time-block"});
+var rowEl = $("<div>", {"class": "row"});
+var hourEl = $("<div>", {"class": "hour"});
+var descriptionEl = $("<div>", {"class": "description"});
+var saveBtnEl = $("<div>", {"class": "saveBtn"});
+var saveButton = $("<i>", {"class": "far fa-save"});
+
+saveBtnEl.append(saveButton);
+rowEl.append(hourEl, descriptionEl, saveBtnEl);
+timeBLockEl.append(rowEl);
+$(".container").append(timeBLockEl);
 
 }
-function populateCal() {
-    timeChunk.hourBlock.each(function (index){
-        $(".hour").text = hourBlock;
-    })
-}
+
+createRow();
+// function populateCal() {
+//     timeChunk.hourBlock.each(function (index){
+//         $(".hour").text = hourBlock;
+//     })
+// }
     
-populateCal;   
+// populateCal;   
 
 //Need to populate cells with hour and event details (from timeChunks array? and localStorage)
 //need to show if event block is past, present, or future (hourBlock < currentHour, >, or else?)
