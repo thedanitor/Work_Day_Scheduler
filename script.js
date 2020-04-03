@@ -1,7 +1,8 @@
 var currentDayEl = $("#currentDay");
 var hourEl = $(".hour");
 var descriptionEl = $(".description")
-var inputEl = $("input")
+var inputEl = $("input");
+var saveBtn = $("i");
 
 var currentHour = moment().format("HH");
 var currentFullDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -71,9 +72,10 @@ var timeBLockEl = $("<div>", {"class": "time-block"});
 var rowEl = $("<div>", {"class": "row"});
 hourEl = $("<div>", {"class": "hour"});
 descriptionEl = $("<form>", {"class": "description"}, {"method": "POST"});
-inputEl = $("<input>", {"type": "text"}, {"class": "description"});
+inputEl = $("<input>", {"type": "text"});
+inputEl.addClass("description");
 var saveBtnEl = $("<div>", {"class": "saveBtn"});
-var saveButton = $("<i>", {"class": "far fa-save"});
+saveButton = $("<i>", {"class": "far fa-save"});
 
 saveBtnEl.append(saveButton);
 descriptionEl.append(inputEl);
@@ -91,7 +93,7 @@ for (var i=0; i < timeChunks.length; i++) {
     } else {
         hourEl.text(`${objectTimeBlock.hourBlock} PM`);
     }
-    inputEl.text(`${objectTimeBlock.schedItem}`);
+    inputEl.attr("placeholder", `${objectTimeBlock.schedItem}`);
     if (objectTimeBlock.milTime < currentHour)
         {
        descriptionEl.addClass("past");
@@ -105,7 +107,10 @@ for (var i=0; i < timeChunks.length; i++) {
     }
 }
 
-
+saveBtn.on("click", function(event) {
+    event.preventDefault();
+    var inputText = inputEl.value.trim();
+})
 //Need to populate cells with hour and event details (from timeChunks array? and localStorage)
 //need to show if event block is past, present, or future (hourBlock < currentHour, >, or else?)
 //Need to make each event block a form to input
