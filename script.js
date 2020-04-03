@@ -9,47 +9,58 @@ currentDayEl.html(currentFullDate);
 var timeChunks = [
     {
         hourBlock: 7,
-        schedItem: "new item at 7"
+        schedItem: "new item at 7",
+        milTime: 7
     },
     {
         hourBlock: 8,
-        schedItem: "new item at 8"
+        schedItem: "new item at 8",
+        milTime: 8
     },
     {
         hourBlock: 9,
-        schedItem: "new item at 9"
+        schedItem: "new item at 9",
+        milTime: 9
     },
     {
         hourBlock: 10,
-        schedItem: "new item at 10"
+        schedItem: "new item at 10",
+        milTime: 10
     },
     {
         hourBlock: 11,
-        schedItem: "new item at 11"
+        schedItem: "new item at 11",
+        milTime: 11
     },
     {
         hourBlock: 12,
-        schedItem: "new item at 12"
+        schedItem: "new item at 12",
+        milTime: 12
     },
     {
         hourBlock: 1,
-        schedItem: "new item at 1"
+        schedItem: "new item at 1",
+        milTime: 13
     },
     {
         hourBlock: 2,
-        schedItem: "new item at 2"
+        schedItem: "new item at 2",
+        milTime: 14
     },
     {
-        hourBlock: 18,
-        schedItem: "new item at 3"
+        hourBlock: 3,
+        schedItem: "new item at 3",
+        milTime: 15
     },
     {
-        hourBlock: 19,
-        schedItem: "new item at 4"
+        hourBlock: 4,
+        schedItem: "new item at 4",
+        milTime: 16
     },
     {
-        hourBlock: 20,
-        schedItem: "new item at 5"
+        hourBlock: 5,
+        schedItem: "new item at 5",
+        milTime: 17
     },
 ]
 console.log(Object.values(timeChunks));
@@ -58,7 +69,7 @@ function createRow(){
 var timeBLockEl = $("<div>", {"class": "time-block"});
 var rowEl = $("<div>", {"class": "row"});
 hourEl = $("<div>", {"class": "hour"});
-descriptionEl = $("<form>", {"class": "description"});
+descriptionEl = $("<form>", {"class": "description"}, {"method": "POST"});
 var saveBtnEl = $("<div>", {"class": "saveBtn"});
 var saveButton = $("<i>", {"class": "far fa-save"});
 
@@ -74,10 +85,10 @@ for (var i=0; i < timeChunks.length; i++) {
     var objectTimeBlock = timeChunks[i];
     hourEl.text(`${objectTimeBlock.hourBlock} AM`);
     descriptionEl.text(`${objectTimeBlock.schedItem}`);
-    if (objectTimeBlock.hourBlock < currentHour)
+    if (objectTimeBlock.milTime < currentHour)
         {
        descriptionEl.addClass("past");
-    } else if (objectTimeBlock.hourBlock == currentHour) {
+    } else if (objectTimeBlock.milTime == currentHour) {
         descriptionEl.addClass("present");
     } else {
     descriptionEl.addClass("future");
