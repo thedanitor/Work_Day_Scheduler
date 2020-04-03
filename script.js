@@ -83,7 +83,12 @@ $(".container").append(timeBLockEl);
 for (var i=0; i < timeChunks.length; i++) {
     createRow();
     var objectTimeBlock = timeChunks[i];
-    hourEl.text(`${objectTimeBlock.hourBlock} AM`);
+    if (`${objectTimeBlock.milTime}` < 12){
+        hourEl.text(`${objectTimeBlock.hourBlock} AM`);
+    } else {
+        hourEl.text(`${objectTimeBlock.hourBlock} PM`);
+    }
+    // hourEl.text(`${objectTimeBlock.hourBlock} AM`);
     descriptionEl.text(`${objectTimeBlock.schedItem}`);
     if (objectTimeBlock.milTime < currentHour)
         {
