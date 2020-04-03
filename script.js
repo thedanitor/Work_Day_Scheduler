@@ -1,6 +1,7 @@
 var currentDayEl = $("#currentDay");
 var hourEl = $(".hour");
 var descriptionEl = $(".description")
+var inputEl = $("input")
 
 var currentHour = moment().format("HH");
 var currentFullDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -70,10 +71,12 @@ var timeBLockEl = $("<div>", {"class": "time-block"});
 var rowEl = $("<div>", {"class": "row"});
 hourEl = $("<div>", {"class": "hour"});
 descriptionEl = $("<form>", {"class": "description"}, {"method": "POST"});
+inputEl = $("<input>", {"type": "text"}, {"class": "description"});
 var saveBtnEl = $("<div>", {"class": "saveBtn"});
 var saveButton = $("<i>", {"class": "far fa-save"});
 
 saveBtnEl.append(saveButton);
+descriptionEl.append(inputEl);
 rowEl.append(hourEl, descriptionEl, saveBtnEl);
 timeBLockEl.append(rowEl);
 $(".container").append(timeBLockEl);
@@ -88,15 +91,17 @@ for (var i=0; i < timeChunks.length; i++) {
     } else {
         hourEl.text(`${objectTimeBlock.hourBlock} PM`);
     }
-    // hourEl.text(`${objectTimeBlock.hourBlock} AM`);
-    descriptionEl.text(`${objectTimeBlock.schedItem}`);
+    inputEl.text(`${objectTimeBlock.schedItem}`);
     if (objectTimeBlock.milTime < currentHour)
         {
        descriptionEl.addClass("past");
+       inputEl.addClass("past");
     } else if (objectTimeBlock.milTime == currentHour) {
         descriptionEl.addClass("present");
+        inputEl.addClass("present");
     } else {
     descriptionEl.addClass("future");
+    inputEl.addClass("future");
     }
 }
 
