@@ -6,7 +6,6 @@ var currentHour = moment().format("HH");
 var currentFullDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 currentDayEl.html(currentFullDate);
 
-
 var timeChunks = [
     {
         hourBlock: 7,
@@ -41,23 +40,19 @@ var timeChunks = [
         schedItem: "new item at 2"
     },
     {
-        hourBlock: 3,
+        hourBlock: 18,
         schedItem: "new item at 3"
     },
     {
-        hourBlock: 4,
+        hourBlock: 19,
         schedItem: "new item at 4"
     },
     {
-        hourBlock: 5,
+        hourBlock: 20,
         schedItem: "new item at 5"
     },
 ]
 console.log(Object.values(timeChunks));
-
-
-
-
 
 function createRow(){
 var timeBLockEl = $("<div>", {"class": "time-block"});
@@ -72,15 +67,22 @@ rowEl.append(hourEl, descriptionEl, saveBtnEl);
 timeBLockEl.append(rowEl);
 $(".container").append(timeBLockEl);
 
-}
-// createRow(); 
+};
 
-timeChunks.forEach((timeChunk) =>
-    createRow(hourEl.text(`${timeChunk.hourBlock} AM`), descriptionEl.text(`${timeChunk.schedItem}`))
-);
-// timeChunks.forEach((timeChunk) =>
-// hourEl.text(`${timeChunk.hourBlock} AM`)
-// );
+for (var i=0; i < timeChunks.length; i++) {
+    createRow();
+    var objectTimeBlock = timeChunks[i];
+    hourEl.text(`${objectTimeBlock.hourBlock} AM`);
+    descriptionEl.text(`${objectTimeBlock.schedItem}`);
+    if (objectTimeBlock.hourBlock < currentHour)
+        {
+       descriptionEl.addClass("past");
+    } else if (objectTimeBlock.hourBlock == currentHour) {
+        descriptionEl.addClass("present");
+    } else {
+    descriptionEl.addClass("future");
+    }
+}
 
 
 //Need to populate cells with hour and event details (from timeChunks array? and localStorage)
@@ -88,14 +90,4 @@ timeChunks.forEach((timeChunk) =>
 //Need to make each event block a form to input
 //save text from input form when cal icon clicked--> send to localStorage
 
-
-//example from https://www.reddit.com/r/javascript/comments/8hl06s/how_to_properly_access_objects_in_array/
-// var donuts = [
-//     { type: "Jelly", cost: 1.22 },
-//     { type: "Chocolate", cost: 2.45 },
-//     { type: "Cider", cost: 1.59 },
-//     { type: "Boston Cream", cost: 5.99 }
-//     ];
-
-// donuts.forEach((donut) => console.log(`${donut.type} donuts cost $${donut.cost} each`));
 
