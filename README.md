@@ -13,9 +13,15 @@ The index.html sheet was left virtually untouched and only small tweaks were mad
 
 Utilizing Moment.js the current time is displayed near the top of the page when the page is loaded.
 
+![Header with current time](/Demo_images/header.png)
+
 Rows for every hour from 7 AM to 5 PM are dynamically created using jQuery. Each row has an hour marker on the left hand side, an input box in the center for the user to add their appointments, and a save button on the right side which will save the appointment to local storage. 
 
+![Time block rows](/Demo_images/timeBlock_rows.png)
+
 The rows are also color-coordinated to inform the user if the hour corresponding to the row is in the past (gray), present (red), or future (green). This is done by comparing the hour of the corresponding row to the current hour using Moment.js. Note: it is much more straightforward to perform that comparison if the hours are in military time.
+
+![Past Present Future color indicators](/Demo_images/past_present_future.png)
 
 Each time the page is loaded the previous scheduled items still appear since they are pulled from local storage. But any item can be cleared or saved over.
 

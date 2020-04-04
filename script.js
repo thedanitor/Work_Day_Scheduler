@@ -1,3 +1,4 @@
+//global variables
 var currentDayEl = $("#currentDay");
 var hourEl = $(".hour");
 var descriptionEl = $(".description")
@@ -6,6 +7,7 @@ var saveBtn = $("i");
 var currentHour = moment().format("HH");
 var currentFullDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 currentDayEl.html(currentFullDate);
+//array of objects that will correspond to rows in scheduler
 var timeChunks = [
     {
         hourBlock: 7,
@@ -63,7 +65,7 @@ var timeChunks = [
         milTime: 17
     },
 ]
-
+//dynamically create rows for scheduler
 function createRow() {
     var timeBLockEl = $("<div>", { "class": "time-block" });
     var rowEl = $("<div>", { "class": "row" });
@@ -77,7 +79,8 @@ function createRow() {
     timeBLockEl.append(rowEl);
     $(".time").append(timeBLockEl);
 };
-
+//populate each row with properties of each object
+//get previous entries from local storage
 for (var i = 0; i < timeChunks.length; i++) {
     createRow();
     var objectTimeBlock = timeChunks[i];
@@ -98,7 +101,7 @@ for (var i = 0; i < timeChunks.length; i++) {
         inputEl.addClass("future");
     }
 }
-
+//when save button is clicked the description that the user has input for the corresponding hour is saved in local storage
 $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     var inputText = $(this).siblings(".description").val();
