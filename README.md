@@ -2,7 +2,6 @@
 
 I created a simple single-day planner using jQuery and Moment.js.
 
-
 ## Technologies used
 
 Using pre-made HTML and CSS sheets the planner was created dynamically using JavaScript/jQuery. 
@@ -24,6 +23,8 @@ The rows are also color-coordinated to inform the user if the hour corresponding
 ![Past Present Future color indicators](/Demo_images/past_present_future.png)
 
 Each time the page is loaded the previous scheduled items still appear since they are pulled from local storage. But any item can be cleared or saved over.
+
+![New lunch appointment](/Demo_images/appointment_lunch.png)
 
 ## Acknowledgement
 
