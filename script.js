@@ -11,57 +11,57 @@ currentDayEl.html(currentFullDate);
 var timeChunks = [
     {
         hourBlock: 7,
-        schedItem: "new item at 7",
+        schedItem: "",
         milTime: 7
     },
     {
         hourBlock: 8,
-        schedItem: "new item at 8",
+        schedItem: "",
         milTime: 8
     },
     {
         hourBlock: 9,
-        schedItem: "new item at 9",
+        schedItem: "",
         milTime: 9
     },
     {
         hourBlock: 10,
-        schedItem: "new item at 10",
+        schedItem: "",
         milTime: 10
     },
     {
         hourBlock: 11,
-        schedItem: "new item at 11",
+        schedItem: "",
         milTime: 11
     },
     {
         hourBlock: 12,
-        schedItem: "new item at 12",
+        schedItem: "",
         milTime: 12
     },
     {
         hourBlock: 1,
-        schedItem: "new item at 1",
+        schedItem: "",
         milTime: 13
     },
     {
         hourBlock: 2,
-        schedItem: "new item at 2",
+        schedItem: "",
         milTime: 14
     },
     {
         hourBlock: 3,
-        schedItem: "new item at 3",
+        schedItem: "",
         milTime: 15
     },
     {
         hourBlock: 4,
-        schedItem: "new item at 4",
+        schedItem: "",
         milTime: 16
     },
     {
         hourBlock: 5,
-        schedItem: "new item at 5",
+        schedItem: "",
         milTime: 17
     },
 ]

@@ -24,7 +24,14 @@ The rows are also color-coordinated to inform the user if the hour corresponding
 
 Each time the page is loaded the previous scheduled items still appear since they are pulled from local storage. But any item can be cleared or saved over.
 
-![New lunch appointment](/Demo_images/appointment_lunch.png)
+Empty row:
+![Emtpy row](/Demo_images/empty_row.png)
+New appointment:
+![New Appointment](/Demo_images/new_appointment.png)
+Click save:
+![Save Appointment](/Demo_images/save_appointment.png)
+Persists when refreshed:
+![Appointment still there](/Demo_images/new_appointment.png)
 
 ## Acknowledgement
 
