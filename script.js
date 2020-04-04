@@ -67,49 +67,52 @@ var timeChunks = [
 ]
 console.log(Object.values(timeChunks));
 
-function createRow(){
-var timeBLockEl = $("<div>", {"class": "time-block"});
-var rowEl = $("<div>", {"class": "row"});
-hourEl = $("<div>", {"class": "hour"});
-descriptionEl = $("<form>", {"class": "description"}, {"method": "POST"});
-inputEl = $("<input>", {"type": "text"});
-inputEl.addClass("description");
-var saveBtnEl = $("<div>", {"class": "saveBtn"});
-saveButton = $("<i>", {"class": "far fa-save"});
-
-saveBtnEl.append(saveButton);
-descriptionEl.append(inputEl);
-rowEl.append(hourEl, descriptionEl, saveBtnEl);
-timeBLockEl.append(rowEl);
-$(".container").append(timeBLockEl);
-
+function createRow() {
+    var timeBLockEl = $("<div>", { "class": "time-block" });
+    var rowEl = $("<div>", { "class": "row" });
+    hourEl = $("<div>", { "class": "hour" });
+    inputEl = $("<input>", { "type": "text" });
+    inputEl.addClass("description");
+    var saveBtnEl = $("<div>", { "class": "saveBtn" });
+    saveButton = $("<i>", { "class": "far fa-save" });
+    saveBtnEl.append(saveButton);
+    rowEl.append(hourEl, inputEl, saveBtnEl);
+    timeBLockEl.append(rowEl);
+    $(".container").append(timeBLockEl);
 };
 
-for (var i=0; i < timeChunks.length; i++) {
+for (var i = 0; i < timeChunks.length; i++) {
     createRow();
+
     var objectTimeBlock = timeChunks[i];
-    if (`${objectTimeBlock.milTime}` < 12){
+    if (`${objectTimeBlock.milTime}` < 12) {
         hourEl.text(`${objectTimeBlock.hourBlock} AM`);
     } else {
         hourEl.text(`${objectTimeBlock.hourBlock} PM`);
     }
+    console.log(hourEl.text());
+    var hourID1 = hourEl.text();
+    localStorage.getItem(hourID1);
+
     inputEl.attr("placeholder", `${objectTimeBlock.schedItem}`);
-    if (objectTimeBlock.milTime < currentHour)
-        {
-       descriptionEl.addClass("past");
-       inputEl.addClass("past");
+    inputEl.attr("value", localStorage.getItem(hourID1));
+    if (objectTimeBlock.milTime < currentHour) {
+        inputEl.addClass("past");
     } else if (objectTimeBlock.milTime == currentHour) {
-        descriptionEl.addClass("present");
         inputEl.addClass("present");
     } else {
-    descriptionEl.addClass("future");
-    inputEl.addClass("future");
+        inputEl.addClass("future");
     }
 }
 
-saveBtn.on("click", function(event) {
+
+
+$(".saveBtn").on("click", function (event) {
     event.preventDefault();
-    var inputText = inputEl.value.trim();
+    var inputText = $(this).siblings(".description").val();
+    var hourID = $(this).siblings(".hour").text();
+    console.log(inputText, hourID);
+    localStorage.setItem(hourID, inputText);
 })
 //Need to populate cells with hour and event details (from timeChunks array? and localStorage)
 //need to show if event block is past, present, or future (hourBlock < currentHour, >, or else?)
