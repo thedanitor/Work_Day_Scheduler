@@ -2,6 +2,8 @@
 
 I created a simple single-day planner using jQuery and Moment.js.
 
+https://thedanitor.github.io/Work_Day_Scheduler/
+
 ## Technologies used
 
 Using pre-made HTML and CSS sheets the planner was created dynamically using JavaScript/jQuery. 
@@ -28,7 +30,7 @@ Empty row:
 ![Emtpy row](/Demo_images/empty_row.png)
 New appointment:
 ![New Appointment](/Demo_images/new_appointment.png)
-Click save:
+Click save (save icon appears larger with mouse-over):
 ![Save Appointment](/Demo_images/save_appointment.png)
 Persists when refreshed:
 ![Appointment still there](/Demo_images/new_appointment.png)
