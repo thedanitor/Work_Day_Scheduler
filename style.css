@@ -68,10 +68,15 @@ textarea{
   background-color: #06AED5;
   color: white;
   width: 10%;
-  padding-top: 30px;
+  padding-top: 28px;
+  font-size: 25px;
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 30px;
   transition: all .3s ease-in-out;
+}
+
+.space {
+  padding: 10px;
 }

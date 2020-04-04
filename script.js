@@ -3,11 +3,9 @@ var hourEl = $(".hour");
 var descriptionEl = $(".description")
 var inputEl = $("input");
 var saveBtn = $("i");
-
 var currentHour = moment().format("HH");
 var currentFullDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 currentDayEl.html(currentFullDate);
-
 var timeChunks = [
     {
         hourBlock: 7,
@@ -65,7 +63,6 @@ var timeChunks = [
         milTime: 17
     },
 ]
-console.log(Object.values(timeChunks));
 
 function createRow() {
     var timeBLockEl = $("<div>", { "class": "time-block" });
@@ -78,22 +75,19 @@ function createRow() {
     saveBtnEl.append(saveButton);
     rowEl.append(hourEl, inputEl, saveBtnEl);
     timeBLockEl.append(rowEl);
-    $(".container").append(timeBLockEl);
+    $(".time").append(timeBLockEl);
 };
 
 for (var i = 0; i < timeChunks.length; i++) {
     createRow();
-
     var objectTimeBlock = timeChunks[i];
     if (`${objectTimeBlock.milTime}` < 12) {
         hourEl.text(`${objectTimeBlock.hourBlock} AM`);
     } else {
         hourEl.text(`${objectTimeBlock.hourBlock} PM`);
     }
-    console.log(hourEl.text());
     var hourID1 = hourEl.text();
     localStorage.getItem(hourID1);
-
     inputEl.attr("placeholder", `${objectTimeBlock.schedItem}`);
     inputEl.attr("value", localStorage.getItem(hourID1));
     if (objectTimeBlock.milTime < currentHour) {
@@ -105,18 +99,12 @@ for (var i = 0; i < timeChunks.length; i++) {
     }
 }
 
-
-
 $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     var inputText = $(this).siblings(".description").val();
     var hourID = $(this).siblings(".hour").text();
-    console.log(inputText, hourID);
     localStorage.setItem(hourID, inputText);
-})
-//Need to populate cells with hour and event details (from timeChunks array? and localStorage)
-//need to show if event block is past, present, or future (hourBlock < currentHour, >, or else?)
-//Need to make each event block a form to input
-//save text from input form when cal icon clicked--> send to localStorage
+});
+
 
 
